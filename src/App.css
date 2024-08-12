@@ -10,3 +10,15 @@ body {
   align-items: center;
   height: 100vh;
 }
+
+.detailsPage {
+  background-color: #3f5f7a;
+  color: #fafbfc;
+  position: absolute;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 1;
+}

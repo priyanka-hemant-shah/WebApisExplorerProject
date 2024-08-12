@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
-
-import styled from 'styled-components';
-import './App.css';
-
+"use strict";
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importDefault(require("react"));
+const styled_components_1 = __importDefault(require("styled-components"));
+require("./App.css");
 // styled tag
-const Button = styled.button`
+const Button = styled_components_1.default.button `
   background-color: #049dd2;
   color: #ffffff;
   font-size: 1em;
@@ -14,10 +17,8 @@ const Button = styled.button`
   border: none;
   cursor: pointer;
 `;
-
 // styled API Details component
-const ApiDetailsPage = styled.div`
-  &.apiDetailsPage {
+const StyledApiDetailsPage = styled_components_1.default.div `
     background-color: #3f5f7a;
     color: #fafbfc;
     position: absolute;
@@ -33,9 +34,9 @@ const ApiDetailsPage = styled.div`
       font-weight: 500;
       width: 60%;
     }
-    & .apiDetailsPage__container {
+    & .apiDetailsPageContainer {
       width: 60%;
-      & .apiDetailsPage__heading {
+      & .apiDetailsPageHeading {
         display: flex;
         align-items: center;
         justify-content: center;
@@ -54,42 +55,31 @@ const ApiDetailsPage = styled.div`
       margin: 5px 0;
       font-size: 14px;
     }
-  }
+ 
 `;
-
-function ApiDetailPage({ apiItemDetails, toggleDrawer }) {
-  return (
-    <ApiDetailsPage className="apiDetailsPage">
-      <div className="apiDetailsPage__container">
-        <div className="apiDetailsPage__heading">
-          {apiItemDetails.logo && <img width="80" src={apiItemDetails.logo} />}
-          <h1>{apiItemDetails.apiName}</h1>
-        </div>
-        <h4>Description</h4>
-        <p>
-          {apiItemDetails.description ? apiItemDetails.description : '-'}
-        </p>
-
-        <h4>Swagger</h4>
-        <p>{apiItemDetails.swaggerUrl ? apiItemDetails.swaggerUrl : '-'}</p>
-
-        <h4>Contact</h4>
-        <p>
-          Email:{' '}
-          {apiItemDetails.contactEmail ? apiItemDetails.contactEmail : '-'}
-        </p>
-        <p>
-          Name:{' '}
-          {apiItemDetails.contactName ? apiItemDetails.contactName : '-'}
-        </p>
-        <p>
-          Url: {apiItemDetails.contactUrl ? apiItemDetails.contactUrl : '-'}
-        </p>
-      </div>
-
-      <Button onClick={toggleDrawer} style={{ position: 'fixed', bottom: 20 }}>Explore more APIs</Button>
-    </ApiDetailsPage>
-  );
-}
-
-export default ApiDetailPage;
+const ApiDetailPage = ({ apiItemDetails, toggleDrawer }) => {
+    // if (!apiItemDetails) return null; // Handle null case
+    return (react_1.default.createElement(StyledApiDetailsPage, null,
+        react_1.default.createElement("div", { className: "apiDetailsPageContainer" },
+            react_1.default.createElement("div", { className: "apiDetailsPageHeading" },
+                apiItemDetails.logo && (react_1.default.createElement("img", { alt: "logo", width: "80", src: apiItemDetails.logo })),
+                react_1.default.createElement("h1", null, apiItemDetails.apiName)),
+            react_1.default.createElement("h4", null, "Description"),
+            react_1.default.createElement("p", null, apiItemDetails.description ? apiItemDetails.description : '-'),
+            react_1.default.createElement("h4", null, "Swagger"),
+            react_1.default.createElement("p", null, apiItemDetails.swaggerUrl ? apiItemDetails.swaggerUrl : '-'),
+            react_1.default.createElement("h4", null, "Contact"),
+            react_1.default.createElement("p", null,
+                "Email:",
+                ' ',
+                apiItemDetails.contactEmail ? apiItemDetails.contactEmail : '-'),
+            react_1.default.createElement("p", null,
+                "Name:",
+                ' ',
+                apiItemDetails.contactName ? apiItemDetails.contactName : '-'),
+            react_1.default.createElement("p", null,
+                "Url: ",
+                apiItemDetails.contactUrl ? apiItemDetails.contactUrl : '-')),
+        react_1.default.createElement(Button, { onClick: toggleDrawer, style: { position: 'fixed', bottom: 20 } }, "Explore more APIs")));
+};
+exports.default = ApiDetailPage;
